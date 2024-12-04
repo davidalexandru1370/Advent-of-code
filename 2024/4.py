@@ -31,7 +31,6 @@ def solve_part1():
                 if matrix[row][col] == 'X':
                     dfs(matrix, row, col, n, m, word, count)
 
-    print("\n".join(["".join(row) for row in matrix2]))
     return count[0]
 
 def solve_part2():
@@ -40,7 +39,6 @@ def solve_part2():
         matrix: List[List[str]] = [[str(x) for x in line.strip()] for line in lines]
         n: int = len(matrix)
         m: int = len(matrix[0])
-        matrix2 = [["." for _ in range(m)] for _ in range(n)]
         count: int = 0
         for row in range(n):
             for col in range(m):
@@ -48,13 +46,8 @@ def solve_part2():
                     left_diagonal = ''.join(sorted(matrix[row][col] + matrix[row + 1][col + 1] + matrix[row + 2][col + 2]))
                     right_diagonal = ''.join(sorted(matrix[row][col + 2] + matrix[row + 1][col + 1] + matrix[row + 2][col]))
                     if left_diagonal == right_diagonal == "AMS" and matrix[row + 1][col + 1] == 'A':
-                        # matrix2[row][col] = matrix[row][col]
-                        # matrix2[row][col + 2] = matrix[row][col + 2]
-                        # matrix2[row + 1][col + 1] = matrix[row + 1][col + 1]
-                        # matrix2[row + 2][col + 2] = matrix[row + 2][col + 2]
                         count += 1
 
-        #print("\n".join(["".join(row) for row in matrix2]))
         return count
 
 if __name__ == "__main__":
