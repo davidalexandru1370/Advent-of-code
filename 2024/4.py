@@ -17,6 +17,7 @@ def dfs(matrix: List[List[str]], row: int, col: int, n: int, m: int, word: str, 
                 break
         else:
             count[0] = count[0] + 1
+
 def solve_part1():
     with open("inputs/4.txt", "r") as file:
         lines: List[str] = file.readlines()
