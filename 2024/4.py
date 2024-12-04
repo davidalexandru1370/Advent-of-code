@@ -23,7 +23,6 @@ def solve_part1():
         matrix: List[List[str]] = [[str(x) for x in line.strip()] for line in lines]
         n: int = len(matrix)
         m: int = len(matrix[0])
-        matrix2 = [["." for _ in range(m)] for _ in range(n)]
         word: str = "XMAS"
         count: List[int] = [0]
         for row in range(n):
