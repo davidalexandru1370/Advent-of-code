@@ -1,6 +1,5 @@
 from typing import List, Dict
 
-
 def solve_part1():
     with open("inputs/5.txt", "r") as file:
         lines: List[str] = file.readlines()
