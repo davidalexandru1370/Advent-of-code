@@ -54,7 +54,6 @@ class Memory:
     def __str__(self):
         return f'id = {self.id} memory = {self.memory} free_space = {self.free_space} free_spaces = {self.free_spaces}'
 
-#7078265395304 too high
 def solve_part2() -> int:
     with open("inputs/9.txt", "r") as file:
         line: str = file.readline()
