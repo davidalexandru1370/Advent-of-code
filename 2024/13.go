@@ -155,7 +155,7 @@ func solve2() {
 	fmt.Println(totalTokens)
 }
 
-func main() {
+func day13() {
 	// solve1()
 	solve2()
 }
