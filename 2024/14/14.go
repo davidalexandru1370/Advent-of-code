@@ -132,6 +132,7 @@ func solveDay14Part2() {
 	steps := 100
 	lines := strings.Split(contentStr, "\n")
 	quadrants := make([]int, 4)
+	var robots []Robot
 	for _, line := range lines {
 		numberPattern := "[-+]?\\d+"
 		re := regexp.MustCompile(numberPattern)
@@ -146,25 +147,21 @@ func solveDay14Part2() {
 				StepX:    Maybe(strconv.Atoi(matches[index+2])),
 				StepY:    Maybe(strconv.Atoi(matches[index+3])),
 			}
-			nextPos := Position{
-				X: mod(mod(robot.StepX*steps, cols)+robot.X, cols),
-				Y: mod(mod(robot.StepY*steps, rows)+robot.Y, rows),
-			}
-			if quadrant := getQuadrant(nextPos, rows, cols); quadrant != NONE {
-				quadrants[quadrant] += 1
-			}
+			robots = append(robots, robot)
 		}
 	}
+	for index := 1; index <= steps; index++ {
+		fmt.Sprintf("Iteration: %d\n", index)
 
-	product := 1
-	for _, q := range quadrants {
-		if q > 0 {
-			product *= q
+		for _, robot := range robots {
+			newPos := Position{
+				X: robot.StepX + robot.Position.X,
+				Y: robot.StepY + robot.Position.Y,
+			}
+
+			robot.Position = newPos
 		}
 	}
-
-	fmt.Println(quadrants)
-	fmt.Println(product)
 }
 
 func day14() {
