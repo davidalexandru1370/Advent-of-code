@@ -21,8 +21,11 @@ public class Main {
         for (String line : lines) {
             String direction = line.substring(0, 1);
             int length = Integer.parseInt(line.substring(1));
+            if (direction.equals("L")) {
+                length = -length;
+            }
             int effectiveTurn = length % 100;
-            int boundToAdd = pos == 0 ? 100 : 0;
+            int boundToAdd = pos == 0 ? 0 : 1;
 
             pos += effectiveTurn;
 
@@ -36,7 +39,7 @@ public class Main {
                 zeros += boundToAdd;
             }
 
-            int fullTurns = length / 100;
+            int fullTurns = Math.abs(length) / 100;
             zeros += fullTurns;
 
             System.out.println("Current position: " + pos);
