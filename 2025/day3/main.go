@@ -65,9 +65,6 @@ func solvePart2(fileName string) {
 	power := 0
 
 	for _, line := range lines {
-		if line == "" {
-			continue
-		}
 		bank := string(line)
 		k := 12
 		num := 0
